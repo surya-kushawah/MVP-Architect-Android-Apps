@@ -1,6 +1,6 @@
 package com.androidwave.cleancode.network;
 
-import com.androidwave.errorhandling.network.pojo.WrapperResponse;
+import com.androidwave.cleancode.network.pojo.WrapperResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

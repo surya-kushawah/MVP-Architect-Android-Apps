@@ -3,9 +3,10 @@ package com.androidwave.cleancode.di.module;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
-import com.androidwave.errorhandling.di.ActivityContext;
-import com.androidwave.errorhandling.utils.rx.AppSchedulerProvider;
-import com.androidwave.errorhandling.utils.rx.SchedulerProvider;
+
+import com.androidwave.cleancode.di.ActivityContext;
+import com.androidwave.cleancode.utils.rx.AppSchedulerProvider;
+import com.androidwave.cleancode.utils.rx.SchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;

@@ -1,10 +1,13 @@
 package com.androidwave.cleancode.ui.base;
-
-import com.androidwave.errorhandling.utils.rx.SchedulerProvider;
+import com.androidwave.cleancode.network.WrapperError;
+import com.androidwave.cleancode.utils.rx.SchedulerProvider;
+import com.google.gson.JsonSyntaxException;
 
 import javax.inject.Inject;
+import javax.net.ssl.HttpsURLConnection;
 
 import io.reactivex.disposables.CompositeDisposable;
+import retrofit2.HttpException;
 
 /**
  * Created on : Jan 19, 2019
@@ -15,7 +18,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     private final SchedulerProvider mSchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
-
+    public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     private V mMvpView;
 
     @Inject
@@ -60,41 +63,35 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     @Override
     public void handleApiError(Throwable error) {
+        if (error instanceof HttpException) {
+            switch (((HttpException) error).code()) {
+                case HttpsURLConnection.HTTP_UNAUTHORIZED:
+                    mMvpView.onError("Unauthorised User ");
+                    break;
+                case HttpsURLConnection.HTTP_FORBIDDEN:
+                    mMvpView.onError("Forbidden");
+                    break;
+                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
+                    mMvpView.onError("Internal Server Error");
+                    break;
+                case HttpsURLConnection.HTTP_BAD_REQUEST:
+                    mMvpView.onError("Bad Request");
+                    break;
+                case API_STATUS_CODE_LOCAL_ERROR:
+                    mMvpView.onError("No Internet Connection");
+                    break;
+                default:
+                    mMvpView.onError(error.getLocalizedMessage());
 
-//        if (error instanceof HttpException) {
-//            switch (((HttpException) error).code()) {
-//                case HttpsURLConnection.HTTP_UNAUTHORIZED:
-//                    getMvpView().onError(R.string.api_default_error);
-//                    break;
-//                case HttpsURLConnection.HTTP_FORBIDDEN:
-//                    setUserAsLoggedOut();
-//                    getMvpView().openActivityOnTokenExpire();
-//                    break;
-//                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
-//                    getMvpView().onError(R.string.api_default_error);
-//                    break;
-//                case HttpsURLConnection.HTTP_BAD_REQUEST:
-//                    try {
-//                        HttpException mError = (HttpException) error;
-//                        String errorBody = mError.response().errorBody().string();
-//                        BaseResponse response = gson.fromJson(errorBody, BaseResponse.class);
-//                        getMvpView().onError(response.getMessage());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                        getMvpView().onError(R.string.api_default_error);
-//                    }
-//                    //getMvpView().onError(R.string.api_default_error);
-//                    break;
-//                case Constants.API_STATUS_CODE_LOCAL_ERROR:
-//                    getMvpView().onError(R.string.connection_error);
-//                    break;
-//                default:
-//                    getMvpView().onError(R.string.api_default_error);
-//                    //  getMvpView().onError(apiError.getMessage());
-//            }
-//        } else {
-//            getMvpView().onError(R.string.connection_error);
-//        }
+            }
+        } else if (error instanceof WrapperError) {
+            mMvpView.onError(error.getMessage());
+        } else if (error instanceof JsonSyntaxException) {
+            mMvpView.onError("Something Went Wrong API is not responding properly!");
+        } else {
+            mMvpView.onError(error.getMessage());
+        }
+
     }
 
 

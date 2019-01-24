@@ -1,7 +1,7 @@
 package com.androidwave.cleancode.di.component;
 
-import com.androidwave.errorhandling.WaveApp;
-import com.androidwave.errorhandling.di.module.ApplicationModule;
+import com.androidwave.cleancode.WaveApp;
+import com.androidwave.cleancode.di.module.ApplicationModule;
 
 import javax.inject.Singleton;
 

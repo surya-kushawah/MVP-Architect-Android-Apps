@@ -18,13 +18,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidwave.errorhandling.R;
-import com.androidwave.errorhandling.WaveApp;
-import com.androidwave.errorhandling.di.component.ActivityComponent;
-import com.androidwave.errorhandling.di.component.DaggerActivityComponent;
-import com.androidwave.errorhandling.di.module.ActivityModule;
-import com.androidwave.errorhandling.utils.CommonUtils;
-import com.androidwave.errorhandling.utils.NetworkUtils;
+
+import com.androidwave.cleancode.R;
+import com.androidwave.cleancode.WaveApp;
+import com.androidwave.cleancode.di.component.ActivityComponent;
+import com.androidwave.cleancode.di.component.DaggerActivityComponent;
+import com.androidwave.cleancode.di.module.ActivityModule;
+import com.androidwave.cleancode.utils.CommonUtils;
+import com.androidwave.cleancode.utils.NetworkUtils;
 
 import butterknife.Unbinder;
 

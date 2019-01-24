@@ -1,7 +1,8 @@
 package com.androidwave.cleancode.di.component;
 
-import com.androidwave.errorhandling.di.PerActivity;
-import com.androidwave.errorhandling.di.module.ActivityModule;
+
+import com.androidwave.cleancode.di.PerActivity;
+import com.androidwave.cleancode.di.module.ActivityModule;
 
 import dagger.Component;
 

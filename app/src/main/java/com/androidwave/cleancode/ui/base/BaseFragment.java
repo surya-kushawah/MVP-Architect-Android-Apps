@@ -8,8 +8,8 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.androidwave.errorhandling.di.component.ActivityComponent;
-import com.androidwave.errorhandling.utils.CommonUtils;
+import com.androidwave.cleancode.di.component.ActivityComponent;
+import com.androidwave.cleancode.utils.CommonUtils;
 
 import butterknife.Unbinder;
 
@@ -129,6 +129,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
             mActivity.openLoginActivity();
         }
     }
+
     public ActivityComponent getActivityComponent() {
         if (mActivity != null) {
             return mActivity.getActivityComponent();

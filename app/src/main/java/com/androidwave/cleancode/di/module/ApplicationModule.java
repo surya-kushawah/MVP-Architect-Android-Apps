@@ -2,8 +2,8 @@ package com.androidwave.cleancode.di.module;
 
 import android.app.Application;
 
-import com.androidwave.errorhandling.BuildConfig;
-import com.androidwave.errorhandling.network.NetworkService;
+import com.androidwave.cleancode.BuildConfig;
+import com.androidwave.cleancode.network.NetworkService;
 
 import dagger.Module;
 import dagger.Provides;

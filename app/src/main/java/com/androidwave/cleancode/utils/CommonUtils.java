@@ -5,7 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
-import com.androidwave.errorhandling.R;
+import com.androidwave.cleancode.R;
+
 
 /**
  * Created on : Jan 19, 2019

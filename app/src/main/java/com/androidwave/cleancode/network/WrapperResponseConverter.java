@@ -1,6 +1,6 @@
 package com.androidwave.cleancode.network;
 
-import com.androidwave.errorhandling.network.pojo.WrapperResponse;
+import com.androidwave.cleancode.network.pojo.WrapperResponse;
 
 import java.io.IOException;
 
@@ -12,11 +12,11 @@ import retrofit2.Converter;
  * Author     : AndroidWave
  * Email    : info@androidwave.com
  */
-public class WrapperResponseBodyConverter<T>
+public class WrapperResponseConverter<T>
         implements Converter<ResponseBody, T> {
     private Converter<ResponseBody, WrapperResponse<T>> converter;
 
-    public WrapperResponseBodyConverter(Converter<ResponseBody,
+    public WrapperResponseConverter(Converter<ResponseBody,
             WrapperResponse<T>> converter) {
         this.converter = converter;
     }

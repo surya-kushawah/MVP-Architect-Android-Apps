@@ -1,6 +1,6 @@
 package com.androidwave.cleancode.network;
 
-import com.androidwave.errorhandling.network.pojo.WrapperResponse;
+import com.androidwave.cleancode.network.pojo.WrapperResponse;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
@@ -47,7 +47,7 @@ public class WrapperConverterFactory extends Converter.Factory {
         };
         Converter<ResponseBody, ?> gsonConverter = factory
                 .responseBodyConverter(wrappedType, annotations, retrofit);
-        return new WrapperResponseBodyConverter(gsonConverter);
+        return new WrapperResponseConverter(gsonConverter);
     }
 }
 

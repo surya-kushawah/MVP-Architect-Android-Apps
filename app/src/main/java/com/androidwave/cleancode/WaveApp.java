@@ -3,6 +3,7 @@ package com.androidwave.cleancode;
 import android.app.Application;
 
 import com.androidwave.cleancode.di.component.ApplicationComponent;
+import com.androidwave.cleancode.di.component.DaggerApplicationComponent;
 import com.androidwave.cleancode.di.module.ApplicationModule;
 
 /**
@@ -10,7 +11,7 @@ import com.androidwave.cleancode.di.module.ApplicationModule;
  * Author     : AndroidWave
  * Email    : info@androidwave.com
  */
-public class AndroidWaveApp extends Application {
+public class WaveApp extends Application {
 
 
     private ApplicationComponent mApplicationComponent;
@@ -18,7 +19,6 @@ public class AndroidWaveApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this)).build();
         mApplicationComponent.inject(this);
