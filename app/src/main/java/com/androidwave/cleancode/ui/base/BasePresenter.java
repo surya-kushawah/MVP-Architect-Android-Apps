@@ -1,5 +1,7 @@
 package com.androidwave.cleancode.ui.base;
-import com.androidwave.cleancode.network.WrapperError;
+
+import com.androidwave.cleancode.data.DataManager;
+import com.androidwave.cleancode.data.network.WrapperError;
 import com.androidwave.cleancode.utils.rx.SchedulerProvider;
 import com.google.gson.JsonSyntaxException;
 
@@ -18,12 +20,14 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     private final SchedulerProvider mSchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
+    private final DataManager manager;
     public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     private V mMvpView;
 
     @Inject
-    public BasePresenter(SchedulerProvider schedulerProvider,
+    public BasePresenter(DataManager manager, SchedulerProvider schedulerProvider,
                          CompositeDisposable compositeDisposable) {
+        this.manager = manager;
         this.mSchedulerProvider = schedulerProvider;
         this.mCompositeDisposable = compositeDisposable;
     }
@@ -48,10 +52,13 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     public void checkViewAttached() {
-        if (!isViewAttached()) throw new MvpViewNotAttachedException();
+        if (!isViewAttached()) throw new ViewNotAttachedException();
     }
 
-    //
+    public DataManager getDataManager() {
+        return manager;
+    }
+
     public SchedulerProvider getSchedulerProvider() {
         return mSchedulerProvider;
     }
@@ -66,7 +73,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         if (error instanceof HttpException) {
             switch (((HttpException) error).code()) {
                 case HttpsURLConnection.HTTP_UNAUTHORIZED:
-                    mMvpView.onError("Unauthorised User ");
+                    mMvpView.onError("Unauthorised UserProfile ");
                     break;
                 case HttpsURLConnection.HTTP_FORBIDDEN:
                     mMvpView.onError("Forbidden");
@@ -101,8 +108,8 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     }
 
-    public static class MvpViewNotAttachedException extends RuntimeException {
-        public MvpViewNotAttachedException() {
+    public static class ViewNotAttachedException extends RuntimeException {
+        public ViewNotAttachedException() {
             super("Please call Presenter.onAttach(MvpView) before" +
                     " requesting data to the Presenter");
         }

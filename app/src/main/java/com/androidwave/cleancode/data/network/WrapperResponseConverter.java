@@ -1,6 +1,6 @@
-package com.androidwave.cleancode.network;
+package com.androidwave.cleancode.data.network;
 
-import com.androidwave.cleancode.network.pojo.WrapperResponse;
+import com.androidwave.cleancode.data.network.pojo.WrapperResponse;
 
 import java.io.IOException;
 

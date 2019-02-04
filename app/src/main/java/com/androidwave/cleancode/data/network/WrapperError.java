@@ -1,4 +1,4 @@
-package com.androidwave.cleancode.network;
+package com.androidwave.cleancode.data.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

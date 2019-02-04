@@ -1,6 +1,6 @@
 package com.androidwave.cleancode.ui.base;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 /**
  * Created on : Jan 19, 2019

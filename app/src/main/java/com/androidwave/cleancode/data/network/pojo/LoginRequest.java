@@ -1,10 +1,8 @@
 
-package com.androidwave.cleancode.network.pojo;
+package com.androidwave.cleancode.data.network.pojo;
 
-import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class LoginRequest {
 

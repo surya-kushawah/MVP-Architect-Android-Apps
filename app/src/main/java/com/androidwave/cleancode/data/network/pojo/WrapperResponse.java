@@ -1,4 +1,4 @@
-package com.androidwave.cleancode.network.pojo;
+package com.androidwave.cleancode.data.network.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
