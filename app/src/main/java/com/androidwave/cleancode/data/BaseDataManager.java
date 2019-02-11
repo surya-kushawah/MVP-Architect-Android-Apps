@@ -45,12 +45,22 @@ public class BaseDataManager implements DataManager {
 
     @Override
     public void setUserLoggedOut() {
-
+        mPreferencesHelper.setAccessToken(null);
+        mPreferencesHelper.setUserId(null);
+        mPreferencesHelper.setUserLoggedIn(LoggedInMode.LOGGED_IN_MODE_LOGOUT);
+        mPreferencesHelper.setUserName(null);
+        mPreferencesHelper.setUserEmail(null);
+        mPreferencesHelper.setUserProfilePicUrl(null);
     }
 
     @Override
     public void updateUserInfo(String accessToken, Long userId, LoggedInMode loggedInMode, String userName, String email, String profilePicPath) {
-//mPreferencesHelper.
+        mPreferencesHelper.setAccessToken(accessToken);
+        mPreferencesHelper.setUserId(userId);
+        mPreferencesHelper.setUserLoggedIn(loggedInMode);
+        mPreferencesHelper.setUserName(userName);
+        mPreferencesHelper.setUserEmail(email);
+        mPreferencesHelper.setUserProfilePicUrl(profilePicPath);
     }
 
     @Override
@@ -91,7 +101,7 @@ public class BaseDataManager implements DataManager {
 
     @Override
     public User findByName(String first, String last) {
-        return mDatabase.userDao().findByName(first,last);
+        return mDatabase.userDao().findByName(first, last);
     }
 
     @Override
@@ -101,61 +111,61 @@ public class BaseDataManager implements DataManager {
 
     @Override
     public int getUserLoggedInMode() {
-        return 0;
+        return mPreferencesHelper.getUserLoggedInMode();
     }
 
     @Override
     public void setUserLoggedIn(LoggedInMode mode) {
-
+        mPreferencesHelper.setUserLoggedIn(mode);
     }
 
     @Override
     public Long getUserId() {
-        return null;
+        return mPreferencesHelper.getUserId();
     }
 
     @Override
     public void setUserId(Long userId) {
-
+        mPreferencesHelper.setUserId(userId);
     }
 
     @Override
     public String getUserName() {
-        return null;
+        return mPreferencesHelper.getUserName();
     }
 
     @Override
     public void setUserName(String userName) {
-
+        mPreferencesHelper.setUserName(userName);
     }
 
     @Override
     public String getUserEmail() {
-        return null;
+        return mPreferencesHelper.getUserEmail();
     }
 
     @Override
     public void setUserEmail(String email) {
-
+        mPreferencesHelper.setUserEmail(email);
     }
 
     @Override
     public String getUserProfilePicUrl() {
-        return null;
+        return mPreferencesHelper.getUserProfilePicUrl();
     }
 
     @Override
     public void setUserProfilePicUrl(String profilePicUrl) {
-
+        mPreferencesHelper.setUserProfilePicUrl(profilePicUrl);
     }
 
     @Override
     public String getAccessToken() {
-        return null;
+        return mPreferencesHelper.getAccessToken();
     }
 
     @Override
     public void setAccessToken(String accessToken) {
-
+        mPreferencesHelper.getAccessToken();
     }
 }
