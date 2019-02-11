@@ -1,13 +1,16 @@
 package com.androidwave.cleancode.di.module;
 
 import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
-
 
 import com.androidwave.cleancode.di.ActivityContext;
+import com.androidwave.cleancode.di.PerActivity;
+import com.androidwave.cleancode.ui.login.LoginMvpPresenter;
+import com.androidwave.cleancode.ui.login.LoginMvpView;
+import com.androidwave.cleancode.ui.login.LoginPresenter;
 import com.androidwave.cleancode.utils.rx.AppSchedulerProvider;
 import com.androidwave.cleancode.utils.rx.SchedulerProvider;
 
+import androidx.appcompat.app.AppCompatActivity;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -48,4 +51,11 @@ public class ActivityModule {
         return new AppSchedulerProvider();
     }
 
+
+    @Provides
+    @PerActivity
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
+            LoginPresenter<LoginMvpView> presenter) {
+        return presenter;
+    }
 }

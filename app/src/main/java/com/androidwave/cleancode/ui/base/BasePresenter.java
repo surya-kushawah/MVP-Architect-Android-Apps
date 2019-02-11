@@ -18,10 +18,10 @@ import retrofit2.HttpException;
  */
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
+    public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     private final SchedulerProvider mSchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
     private final DataManager manager;
-    public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     private V mMvpView;
 
     @Inject

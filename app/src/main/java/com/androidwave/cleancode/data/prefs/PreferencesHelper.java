@@ -26,4 +26,18 @@ public interface PreferencesHelper {
     String getAccessToken();
 
     void setAccessToken(String accessToken);
+
+    String getUserMobile();
+
+    void setUserMobile(String mobileNumber);
+
+    boolean isCoachMarkView();
+
+    void setCoachMarkView(boolean coachMark);
+
+    boolean isFirstTime();
+
+    void setFirstTime(boolean firstTime);
+
+    void logoutUser();
 }

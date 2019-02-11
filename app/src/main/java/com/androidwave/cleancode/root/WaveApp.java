@@ -1,4 +1,4 @@
-package com.androidwave.cleancode;
+package com.androidwave.cleancode.root;
 
 import android.app.Application;
 

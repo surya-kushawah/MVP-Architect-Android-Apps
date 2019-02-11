@@ -45,12 +45,7 @@ public class BaseDataManager implements DataManager {
 
     @Override
     public void setUserLoggedOut() {
-        mPreferencesHelper.setAccessToken(null);
-        mPreferencesHelper.setUserId(null);
-        mPreferencesHelper.setUserLoggedIn(LoggedInMode.LOGGED_IN_MODE_LOGOUT);
-        mPreferencesHelper.setUserName(null);
-        mPreferencesHelper.setUserEmail(null);
-        mPreferencesHelper.setUserProfilePicUrl(null);
+        logoutUser();
     }
 
     @Override
@@ -167,5 +162,40 @@ public class BaseDataManager implements DataManager {
     @Override
     public void setAccessToken(String accessToken) {
         mPreferencesHelper.getAccessToken();
+    }
+
+    @Override
+    public String getUserMobile() {
+        return mPreferencesHelper.getUserMobile();
+    }
+
+    @Override
+    public void setUserMobile(String mobileNumber) {
+        mPreferencesHelper.setUserMobile(mobileNumber);
+    }
+
+    @Override
+    public boolean isCoachMarkView() {
+        return mPreferencesHelper.isCoachMarkView();
+    }
+
+    @Override
+    public void setCoachMarkView(boolean isShowCoachMark) {
+        mPreferencesHelper.setCoachMarkView(isShowCoachMark);
+    }
+
+    @Override
+    public boolean isFirstTime() {
+        return mPreferencesHelper.isFirstTime();
+    }
+
+    @Override
+    public void setFirstTime(boolean firstTime) {
+        mPreferencesHelper.setCoachMarkView(firstTime);
+    }
+
+    @Override
+    public void logoutUser() {
+        mPreferencesHelper.logoutUser();
     }
 }

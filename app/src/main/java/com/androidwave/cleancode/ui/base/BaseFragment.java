@@ -3,15 +3,14 @@ package com.androidwave.cleancode.ui.base;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.fragment.app.Fragment;
 import android.view.View;
 
 import com.androidwave.cleancode.di.component.ActivityComponent;
 import com.androidwave.cleancode.utils.CommonUtils;
 
-import butterknife.Unbinder;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created on : Jan 19, 2019
@@ -20,9 +19,8 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment implements MvpView {
 
-    private BaseActivity mActivity;
-    private Unbinder mUnBinder;
     protected static ProgressDialog mProgressDialog;
+    private BaseActivity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -141,19 +139,9 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         return mActivity;
     }
 
-    public void setUnBinder(Unbinder unBinder) {
-        mUnBinder = unBinder;
-    }
 
     protected abstract void setUp(View view);
 
-    @Override
-    public void onDestroy() {
-        if (mUnBinder != null) {
-            mUnBinder.unbind();
-        }
-        super.onDestroy();
-    }
 
     public interface Callback {
 

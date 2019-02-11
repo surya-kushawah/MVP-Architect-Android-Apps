@@ -1,12 +1,13 @@
 package com.androidwave.cleancode.data.db;
 
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
 import android.content.Context;
 
 import com.androidwave.cleancode.data.db.dao.UserDao;
 import com.androidwave.cleancode.data.db.model.User;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 
 /**
@@ -15,10 +16,8 @@ import com.androidwave.cleancode.data.db.model.User;
  */
 @Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-    private static AppDatabase mInstance;
     private static final String DATABASE_NAME = "wave-database";
-
-    public abstract UserDao userDao();
+    private static AppDatabase mInstance;
 
     public synchronized static AppDatabase getDatabaseInstance(Context context) {
         if (mInstance == null) {
@@ -33,5 +32,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static void destroyInstance() {
         mInstance = null;
     }
+
+    public abstract UserDao userDao();
 
 }
