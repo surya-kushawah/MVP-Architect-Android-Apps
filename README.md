@@ -1,6 +1,6 @@
-# MVP Architect Android apps with Dagger2, Retrofit & RxJava 
+[# MVP Architect Android apps with Dagger2, Retrofit & RxJava ](https://androidwave.com/mvp-architect-android-apps-with-dagger-2-retrofit-rxjava-2/ "# MVP Architect Android apps with Dagger2, Retrofit & RxJava ")
 
-In this article, I’m gonna to explain the implementation of MVP architecture using Dagger 2, ButterKnife, Room Persistence, Rxjava 2, RxAndroid , Retrofit, logging and debugging. I will shared repository that contain all above library implementation following best practices.
+[In this article](https://androidwave.com/mvp-architect-android-apps-with-dagger-2-retrofit-rxjava-2/ "In this article"), I’m gonna to explain the implementation of MVP architecture using Dagger 2, ButterKnife, Room Persistence, Rxjava 2, RxAndroid , Retrofit, logging and debugging. I will shared repository that contain all above library implementation following best practices.
 
 #### MVP Architect Sample Application Tutorials Series
 - MVP Sample App:- https://androidwave.com/android-mvp-architecture-for-beginners-demo-app/
