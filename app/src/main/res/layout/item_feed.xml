@@ -30,6 +30,7 @@
         android:text=""
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#161616"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewThumbnail" />
@@ -45,6 +46,7 @@
         android:layout_marginRight="8dp"
         android:text=""
         android:textSize="14sp"
+        android:textColor="#2962FF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
