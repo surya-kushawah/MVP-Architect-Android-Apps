@@ -5,6 +5,7 @@ import android.content.Context;
 import com.androidwave.cleancode.data.db.AppDatabase;
 import com.androidwave.cleancode.data.db.model.User;
 import com.androidwave.cleancode.data.network.RestApiHelper;
+import com.androidwave.cleancode.data.network.pojo.FeedItem;
 import com.androidwave.cleancode.data.network.pojo.LoginRequest;
 import com.androidwave.cleancode.data.network.pojo.UserProfile;
 import com.androidwave.cleancode.data.network.pojo.WrapperResponse;
@@ -102,6 +103,11 @@ public class BaseDataManager implements DataManager {
     @Override
     public Single<WrapperResponse<UserProfile>> doLoginApiCall(LoginRequest request) {
         return mApiHelper.doLoginApiCall(request);
+    }
+
+    @Override
+    public Single<WrapperResponse<List<FeedItem>>> getFeedList() {
+        return mApiHelper.getFeedList();
     }
 
     @Override

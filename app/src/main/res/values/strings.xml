@@ -16,4 +16,7 @@
         completions."
     </string>
     <string name="input_invalid">Email or password cannot be empty</string>
+    <string name="empty_screen">We do not have anything\nhere right now. Please Retry</string>
+    <string name="btn_retry">Retry</string>
+    <string name="title_home">Home</string>
 </resources>

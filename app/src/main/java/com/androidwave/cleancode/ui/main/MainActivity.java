@@ -2,19 +2,35 @@ package com.androidwave.cleancode.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.androidwave.cleancode.R;
+import com.androidwave.cleancode.data.network.pojo.FeedItem;
 import com.androidwave.cleancode.ui.base.BaseActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.androidwave.cleancode.utils.DividerItemDecoration;
 
-import androidx.appcompat.widget.Toolbar;
+import java.util.List;
 
-public class MainActivity extends BaseActivity {
+import javax.inject.Inject;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MainActivity extends BaseActivity implements MainMvpView, RssAdapter.Callback {
+
+    RecyclerView mRecyclerView;
+
+    @Inject
+    MainMvpPresenter<MainMvpView> mPresenter;
+
+    @Inject
+    RssAdapter mRssAdapter;
+
+    LinearLayoutManager mLayoutManager;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -25,12 +41,21 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getActivityComponent().inject(this);
+        mPresenter.onAttach(MainActivity.this);
+        setUp();
 
     }
 
     @Override
     protected void setUp() {
-
+        mRecyclerView = findViewById(R.id.recyclerViewFeed);
+        mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        Drawable dividerDrawable = ContextCompat.getDrawable(this, R.drawable.divider_drawable);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(dividerDrawable));
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mPresenter.onViewPrepared();
     }
 
     @Override
@@ -53,5 +78,16 @@ public class MainActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateFeed(List<FeedItem> feedItemList) {
+        mRecyclerView.setAdapter(mRssAdapter);
+        mRssAdapter.addItems(feedItemList);
+    }
+
+    @Override
+    public void onEmptyViewRetryClick() {
+        mPresenter.onViewPrepared();
     }
 }

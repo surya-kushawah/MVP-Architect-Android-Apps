@@ -7,8 +7,14 @@ import com.androidwave.cleancode.di.PerActivity;
 import com.androidwave.cleancode.ui.login.LoginMvpPresenter;
 import com.androidwave.cleancode.ui.login.LoginMvpView;
 import com.androidwave.cleancode.ui.login.LoginPresenter;
+import com.androidwave.cleancode.ui.main.MainMvpPresenter;
+import com.androidwave.cleancode.ui.main.MainMvpView;
+import com.androidwave.cleancode.ui.main.MainPresenter;
+import com.androidwave.cleancode.ui.main.RssAdapter;
 import com.androidwave.cleancode.utils.rx.AppSchedulerProvider;
 import com.androidwave.cleancode.utils.rx.SchedulerProvider;
+
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import dagger.Module;
@@ -54,8 +60,20 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
-            LoginPresenter<LoginMvpView> presenter) {
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView> presenter) {
         return presenter;
+    }
+
+
+    @Provides
+    @PerActivity
+    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
+        return presenter;
+    }
+
+
+    @Provides
+    RssAdapter provideRssAdapter() {
+        return new RssAdapter(new ArrayList<>());
     }
 }
